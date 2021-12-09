@@ -1,15 +1,20 @@
-import React from 'react';
 import { render } from 'react-dom';
-import { Hello } from './сomponents/Hello';
 import { Table } from './сomponents/Table';
 import './style.css';
+import {useState} from "react";
 
 const App = (): JSX.Element => {
+    const [name, setName] = useState('New user');
+
+    const updateName = (value: string) => {
+        setName(value);
+    }
+
     return (
         <div>
-            <Hello />
+            <h1>Hello, {name}!</h1>
             <p>Start editing to see some magic happen :)</p>
-            <Table />
+            <Table updateName={updateName} />
         </div>
     );
 }

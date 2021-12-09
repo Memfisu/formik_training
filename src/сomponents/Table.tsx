@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import { Formik, Form , Field, ErrorMessage, useFormikContext } from 'formik';
 import { validationSchema } from '../helpers/validation';
 import { initialValues } from '../helpers/initialValues';
@@ -6,23 +6,26 @@ import { checkUser } from '../helpers/api';
 
 const renderError = (message: string) => <div className="error">{message}</div>;
 
-export const Table = (): JSX.Element => {
+type Props = {
+    updateName: (name: string) => void
+}
+
+export const Table = ({ updateName }: Props): JSX.Element => {
     const [disabled, setDisabled] = useState(true);
 
     const onSubmit = useCallback(values => {
         console.log(JSON.stringify(values, null, 2));
-    }, []);
+        updateName(values.login);
+    }, [updateName]);
 
     const EnableSubmitButton = () => {
-        const formik = useFormikContext();
+        const { values } = useFormikContext();
 
         useEffect(() => {
             // @ts-ignore
-            if (Object.values(formik.values).every(item => !!item)) setDisabled(false);
+            if (Object.values(values).every(item => !!item)) setDisabled(false);
             else setDisabled(true);
-        }, [
-            formik.values
-        ]);
+        }, [values]);
         return null;
     };
 
