@@ -4,13 +4,13 @@ import { validationSchema } from '../helpers/validation';
 import { initialValues } from '../helpers/initialValues';
 import { checkUser } from '../helpers/api';
 
-const renderError = (message: string) => <div className="error">{message}</div>;
-
 type Props = {
     updateName: (name: string) => void
 }
 
-type Test = { [s: string]: string; } | ArrayLike<string>;
+const getObjValues = (values: {}) => Object.values(values);
+
+const renderError = (message: string) => <div className="error">{message}</div>;
 
 export const Table = ({ updateName }: Props): JSX.Element => {
     const [disabled, setDisabled] = useState(true);
@@ -24,9 +24,12 @@ export const Table = ({ updateName }: Props): JSX.Element => {
         const { values } = useFormikContext();
 
         useEffect(() => {
-            if (Object.values(values).every(item => !!item)) setDisabled(false);
-            else setDisabled(true);
+            if (typeof values === 'object' && values !== null) {
+                if (getObjValues(values).every(item => !!item)) setDisabled(false);
+                else setDisabled(true);
+            }
         }, [values]);
+
         return null;
     };
 
