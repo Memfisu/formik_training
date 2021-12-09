@@ -10,6 +10,8 @@ type Props = {
     updateName: (name: string) => void
 }
 
+type Test = { [s: string]: string; } | ArrayLike<string>;
+
 export const Table = ({ updateName }: Props): JSX.Element => {
     const [disabled, setDisabled] = useState(true);
 
@@ -22,7 +24,6 @@ export const Table = ({ updateName }: Props): JSX.Element => {
         const { values } = useFormikContext();
 
         useEffect(() => {
-            // @ts-ignore
             if (Object.values(values).every(item => !!item)) setDisabled(false);
             else setDisabled(true);
         }, [values]);
