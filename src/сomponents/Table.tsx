@@ -43,19 +43,19 @@ export const Table = ({ updateName }: Props): JSX.Element => {
             <table>
                 <tbody>
                     <tr>
-                        <td>
+                        <td className="number">
                             <label htmlFor="number">Я про числа</label>
                             <Field type="text" name="number" />
                             <ErrorMessage name="number">{renderError}</ErrorMessage>
                         </td>
 
-                        <td>
+                        <td className="phone">
                             <label htmlFor="phone">Я про телефоны</label>
                             <Field type="phone" name="phone" />
                             <ErrorMessage name="phone">{renderError}</ErrorMessage>
                         </td>
 
-                        <td>
+                        <td className="money">
                             <label htmlFor="money">Я про деньги</label>
                             <Field type="text" name="money" />
                             <ErrorMessage name="money">{renderError}</ErrorMessage>
@@ -63,7 +63,7 @@ export const Table = ({ updateName }: Props): JSX.Element => {
                     </tr>
 
                     <tr>
-                        <td>
+                        <td className="login">
                             <label htmlFor="login">Имя пользователя</label>
                             <Field
                                 type="text"
@@ -73,13 +73,13 @@ export const Table = ({ updateName }: Props): JSX.Element => {
                             <ErrorMessage name="login">{renderError}</ErrorMessage>
                         </td>
 
-                        <td>
+                        <td className="lastName">
                             <label htmlFor="lastName">Фамилия</label>
                             <Field type="text" name="lastName" />
                             <ErrorMessage name="lastName">{renderError}</ErrorMessage>
                         </td>
 
-                        <td>
+                        <td className="date">
                             <label htmlFor="date">Дата рождения</label>
                             <Field type="date" name="date" />
                             <ErrorMessage name="date">{renderError}</ErrorMessage>
