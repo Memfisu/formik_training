@@ -1,8 +1,9 @@
-import { useEffect, useCallback, useState } from 'react';
-import { Formik, Form , Field, ErrorMessage, useFormikContext } from 'formik';
+import { useCallback } from 'react';
+import { Formik, Form , Field, ErrorMessage } from 'formik';
 import { validationSchema } from '../helpers/validation';
-import { initialValues, IValues } from '../helpers/initialValues';
+import { initialValues } from '../helpers/initialValues';
 import { checkUser } from '../helpers/api';
+import { SubmitButton } from './SubmitButton';
 
 type Props = {
     updateName: (name: string) => void
@@ -11,25 +12,11 @@ type Props = {
 const renderError = (message: string) => <div className="error">{message}</div>;
 
 export const Table = ({ updateName }: Props): JSX.Element => {
-    const [disabled, setDisabled] = useState(true);
 
     const onSubmit = useCallback(values => {
         console.log(JSON.stringify(values, null, 2));
         updateName(values.login);
     }, [updateName]);
-
-    const EnableSubmitButton = () => {
-        const { values } = useFormikContext<IValues>();
-
-        useEffect(() => {
-            if (typeof values === 'object' && values !== null) {
-                if (Object.values(values).every(item => !!item)) setDisabled(false);
-                else setDisabled(true);
-            }
-        }, [values]);
-
-        return null;
-    };
 
     return (
         <Formik
@@ -92,10 +79,7 @@ export const Table = ({ updateName }: Props): JSX.Element => {
                 </tbody>
             </table>
 
-            <EnableSubmitButton />
-            <div className="buttonContainer">
-                <button type="submit" disabled={disabled}>Отправить</button>
-            </div>
+            <SubmitButton />
         </Form>
         </Formik>
     );
