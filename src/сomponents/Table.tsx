@@ -1,14 +1,12 @@
 import { useEffect, useCallback, useState } from 'react';
 import { Formik, Form , Field, ErrorMessage, useFormikContext } from 'formik';
 import { validationSchema } from '../helpers/validation';
-import { initialValues } from '../helpers/initialValues';
+import { initialValues, IValues } from '../helpers/initialValues';
 import { checkUser } from '../helpers/api';
 
 type Props = {
     updateName: (name: string) => void
 }
-
-const getObjValues = (values: {}) => Object.values(values);
 
 const renderError = (message: string) => <div className="error">{message}</div>;
 
@@ -21,11 +19,11 @@ export const Table = ({ updateName }: Props): JSX.Element => {
     }, [updateName]);
 
     const EnableSubmitButton = () => {
-        const { values } = useFormikContext();
+        const { values } = useFormikContext<IValues>();
 
         useEffect(() => {
             if (typeof values === 'object' && values !== null) {
-                if (getObjValues(values).every(item => !!item)) setDisabled(false);
+                if (Object.values(values).every(item => !!item)) setDisabled(false);
                 else setDisabled(true);
             }
         }, [values]);
@@ -40,7 +38,7 @@ export const Table = ({ updateName }: Props): JSX.Element => {
             onSubmit={onSubmit}
         >
         <Form>
-            <table>
+            <table className="table">
                 <tbody>
                     <tr>
                         <td className="number">
@@ -74,8 +72,10 @@ export const Table = ({ updateName }: Props): JSX.Element => {
                         </td>
 
                         <td className="lastName">
-                            <label htmlFor="lastName">Фамилия</label>
-                            <Field type="text" name="lastName" />
+                            <div className="lastName_container">
+                                <label htmlFor="lastName">Фамилия</label>
+                                <Field type="text" name="lastName" />
+                            </div>
                             <ErrorMessage name="lastName">{renderError}</ErrorMessage>
                         </td>
 
@@ -89,7 +89,9 @@ export const Table = ({ updateName }: Props): JSX.Element => {
             </table>
 
             <EnableSubmitButton />
-            <button type="submit" disabled={disabled}>Отправить</button>
+            <div className="buttonContainer">
+                <button type="submit" disabled={disabled}>Отправить</button>
+            </div>
         </Form>
         </Formik>
     );

@@ -2,12 +2,32 @@ h1, p {
   font-family: Lato, serif;
 }
 
+.container {
+  padding: 40px;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.buttonContainer {
+  margin-top: 20px;
+}
+
 .error {
   color: red;
 }
 
 td {
   height: 100px;
+  width: 300px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.number label {
+  display: inline-block;
+  height: 100%;
 }
 
 .phone {
@@ -15,6 +35,14 @@ td {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.money {
+  vertical-align: middle;
+}
+
+.money label {
+  width: 30px;
 }
 
 .login {
@@ -34,4 +62,12 @@ td {
 
 .login div {
   order: 3;
+}
+
+.lastName_container {
+
+}
+
+.lastName input {
+  width: 130px;
 }

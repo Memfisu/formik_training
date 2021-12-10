@@ -1,4 +1,4 @@
-interface IValues {
+export interface IValues {
     number: string,
     phone: string,
     money: string,

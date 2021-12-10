@@ -1,5 +1,6 @@
 import { render } from 'react-dom';
 import { Table } from './сomponents/Table';
+import './reset.css';
 import './style.css';
 import {useState} from "react";
 
@@ -11,7 +12,7 @@ const App = (): JSX.Element => {
     }
 
     return (
-        <div>
+        <div className="container">
             <h1>Hello, {name}!</h1>
             <p>Start editing to see some magic happen :)</p>
             <Table updateName={updateName} />
