@@ -55,7 +55,9 @@ export const Table = ({ updateName }: Props): JSX.Element => {
 
                         <td className="money">
                             <label htmlFor="money">Я про деньги</label>
-                            <Field type="text" name="money" />
+                            <div className="money_container">
+                                <Field type="text" name="money" />
+                            </div>
                             <ErrorMessage name="money">{renderError}</ErrorMessage>
                         </td>
                     </tr>
