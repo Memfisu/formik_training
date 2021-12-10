@@ -82,8 +82,10 @@ export const Table = ({ updateName }: Props): JSX.Element => {
                         </td>
 
                         <td className="date">
-                            <label htmlFor="date">Дата рождения</label>
-                            <Field type="date" name="date" />
+                            <div className="date_container">
+                                <label htmlFor="date">Дата рождения</label>
+                                <Field type="date" name="date" />
+                            </div>
                             <ErrorMessage name="date">{renderError}</ErrorMessage>
                         </td>
                     </tr>

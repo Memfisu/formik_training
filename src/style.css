@@ -25,9 +25,19 @@ td {
   padding: 10px;
 }
 
+.number {
+  display: flex;
+  flex-direction: column;
+}
+
 .number label {
   display: inline-block;
   height: 100px;
+}
+
+.number input {
+  width: 150px;
+  align-self: center;
 }
 
 .phone {
@@ -69,10 +79,33 @@ td {
   order: 3;
 }
 
-.lastName_container {
+.lastName {
+  vertical-align: middle;
+  text-align: center;
+}
 
+.lastName_container {
+  display: flex;
+  width: 100%
+}
+
+.lastName label {
+  flex-grow: 3;
 }
 
 .lastName input {
-  width: 130px;
+  width: 100px;
+}
+
+.date_container {
+  display: flex;
+  width: 100%
+}
+
+.date label {
+  flex-grow: 3;
+}
+
+.date input {
+  margin-right: 50px;
 }
