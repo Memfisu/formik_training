@@ -24,56 +24,70 @@ export const Table = ({ updateName }: Props): JSX.Element => {
             validationSchema={validationSchema}
             onSubmit={onSubmit}
         >
-        <Form>
+        <Form className={"table_wrapper"}>
             <table className="table">
                 <tbody>
                     <tr>
-                        <td className="number">
+                        <td>
+                            <div className="number" >
+
                             <label htmlFor="number">Я про числа</label>
                             <Field type="text" name="number" />
                             <ErrorMessage name="number">{renderError}</ErrorMessage>
+                            </div>
                         </td>
 
-                        <td className="phone">
+                        <td >
+                            <div className="phone">
+
                             <label htmlFor="phone">Я про телефоны</label>
                             <Field type="phone" name="phone" />
                             <ErrorMessage name="phone">{renderError}</ErrorMessage>
+                            </div>
                         </td>
 
-                        <td className="money">
-                            <label htmlFor="money">Я про деньги</label>
-                            <div className="money_container">
-                                <Field type="text" name="money" />
+                        <td>
+                            <div className="money">
+                                <label htmlFor="money">Я про деньги</label>
+                                <div className="money_container">
+                                    <Field type="text" name="money"/>
+                                </div>
+                                <ErrorMessage name="money">{renderError}</ErrorMessage>
                             </div>
-                            <ErrorMessage name="money">{renderError}</ErrorMessage>
                         </td>
                     </tr>
 
                     <tr>
-                        <td className="login">
-                            <label htmlFor="login">Имя пользователя</label>
-                            <Field
-                                type="text"
-                                name="login"
-                                validate={checkUser}
-                            />
-                            <ErrorMessage name="login">{renderError}</ErrorMessage>
+                        <td>
+                            <div className="login">
+                                <label htmlFor="login">Имя пользователя</label>
+                                <Field
+                                    type="text"
+                                    name="login"
+                                    validate={checkUser}
+                                />
+                                <ErrorMessage name="login">{renderError}</ErrorMessage>
+                            </div>
                         </td>
 
-                        <td className="lastName">
-                            <div className="lastName_container">
-                                <label htmlFor="lastName">Фамилия</label>
-                                <Field type="text" name="lastName" />
+                        <td>
+                            <div className="lastName">
+                                <div className="lastName_container">
+                                    <label htmlFor="lastName">Фамилия</label>
+                                    <Field type="text" name="lastName"/>
+                                </div>
+                                <ErrorMessage name="lastName">{renderError}</ErrorMessage>
                             </div>
-                            <ErrorMessage name="lastName">{renderError}</ErrorMessage>
                         </td>
 
-                        <td className="date">
-                            <div className="date_container">
-                                <label htmlFor="date">Дата рождения</label>
-                                <Field type="date" name="date" />
+                        <td>
+                            <div className="date">
+                                <div className="date_container">
+                                    <label htmlFor="date">Дата рождения</label>
+                                    <Field type="date" name="date"/>
+                                </div>
+                                <ErrorMessage name="date">{renderError}</ErrorMessage>
                             </div>
-                            <ErrorMessage name="date">{renderError}</ErrorMessage>
                         </td>
                     </tr>
                 </tbody>
