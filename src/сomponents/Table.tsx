@@ -38,40 +38,48 @@ export const Table = ({ updateName }: Props): JSX.Element => {
             <table className="table">
                 <tbody>
                     <tr>
-                        <td className="number">
+                        <td>
                             <div className="number_container">
                                 <label htmlFor="number">Я про числа</label>
-                                <Field type="text" name="number" />
-                                <ErrorMessage name="number">{renderError}</ErrorMessage>
+                                <div className="number_fieldError_container">
+                                    <Field type="text" name="number" />
+                                    <ErrorMessage name="number">{renderError}</ErrorMessage>
+                                </div>
                             </div>
                         </td>
 
-                        <td className="phone">
-                            <label htmlFor="phone">Я про телефоны</label>
-                            <Field name="phone">
-                                {({ field }: IField) => (
-                                    <MaskedInput
-                                        {...field}
-                                        mask={phoneNumberMask}
-                                        id="phone"
-                                        type="text"
-                                    />
-                                )}
-                            </Field>
-                            <ErrorMessage name="phone">{renderError}</ErrorMessage>
+                        <td>
+                            <div className="phone_container">
+                                <label htmlFor="phone">Я про телефоны</label>
+                                <Field name="phone">
+                                    {({ field }: IField) => (
+                                        <MaskedInput
+                                            {...field}
+                                            mask={phoneNumberMask}
+                                            id="phone"
+                                            type="text"
+                                        />
+                                    )}
+                                </Field>
+                                <ErrorMessage name="phone">{renderError}</ErrorMessage>
+                            </div>
                         </td>
 
-                        <td className="money">
-                            <label htmlFor="money">Я про деньги</label>
+                        <td>
                             <div className="money_container">
-                                <Field type="text" name="money" />
+                                <div className="money_labelField_container">
+                                    <label htmlFor="money">Я про деньги</label>
+                                    <div className="money_field_container">
+                                        <Field type="text" name="money" />
+                                    </div>
+                                </div>
+                                <ErrorMessage name="money">{renderError}</ErrorMessage>
                             </div>
-                            <ErrorMessage name="money">{renderError}</ErrorMessage>
                         </td>
                     </tr>
 
                     <tr>
-                        <td className="login">
+                        <td>
                             <div className="login_container">
                                 <label htmlFor="login">Имя пользователя</label>
                                 <Field
@@ -83,20 +91,24 @@ export const Table = ({ updateName }: Props): JSX.Element => {
                             </div>
                         </td>
 
-                        <td className="lastName">
+                        <td>
                             <div className="lastName_container">
-                                <label htmlFor="lastName">Фамилия</label>
-                                <Field type="text" name="lastName" />
+                                <div className="lastName_labelField_container">
+                                    <label htmlFor="lastName">Фамилия</label>
+                                    <Field type="text" name="lastName" />
+                                </div>
+                                <ErrorMessage name="lastName">{renderError}</ErrorMessage>
                             </div>
-                            <ErrorMessage name="lastName">{renderError}</ErrorMessage>
                         </td>
 
-                        <td className="date">
+                        <td>
                             <div className="date_container">
-                                <label htmlFor="date">Дата рождения</label>
-                                <Field type="date" name="date" />
+                                <div className="date_labelField_container">
+                                    <label htmlFor="date">Дата рождения</label>
+                                    <Field type="date" name="date" />
+                                </div>
+                                <ErrorMessage name="date">{renderError}</ErrorMessage>
                             </div>
-                            <ErrorMessage name="date">{renderError}</ErrorMessage>
                         </td>
                     </tr>
                 </tbody>
