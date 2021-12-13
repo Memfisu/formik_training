@@ -1,12 +1,22 @@
 import { useCallback } from 'react';
+import MaskedInput from 'react-text-mask';
 import { Formik, Form , Field, ErrorMessage } from 'formik';
-import { validationSchema } from '../helpers/validation';
+import { validationSchema, phoneNumberMask } from '../helpers/validation';
 import { initialValues } from '../helpers/initialValues';
 import { checkUser } from '../helpers/api';
 import { SubmitButton } from './SubmitButton';
 
 type Props = {
     updateName: (name: string) => void
+}
+
+interface IField {
+    field: {
+        name: string,
+        value: string,
+        onBlur: () => void,
+        onChange: () => void
+    }
 }
 
 const renderError = (message: string) => <div className="error">{message}</div>;
@@ -29,14 +39,25 @@ export const Table = ({ updateName }: Props): JSX.Element => {
                 <tbody>
                     <tr>
                         <td className="number">
-                            <label htmlFor="number">Я про числа</label>
-                            <Field type="text" name="number" />
-                            <ErrorMessage name="number">{renderError}</ErrorMessage>
+                            <div className="number_container">
+                                <label htmlFor="number">Я про числа</label>
+                                <Field type="text" name="number" />
+                                <ErrorMessage name="number">{renderError}</ErrorMessage>
+                            </div>
                         </td>
 
                         <td className="phone">
                             <label htmlFor="phone">Я про телефоны</label>
-                            <Field type="phone" name="phone" />
+                            <Field name="phone">
+                                {({ field }: IField) => (
+                                    <MaskedInput
+                                        {...field}
+                                        mask={phoneNumberMask}
+                                        id="phone"
+                                        type="text"
+                                    />
+                                )}
+                            </Field>
                             <ErrorMessage name="phone">{renderError}</ErrorMessage>
                         </td>
 
@@ -51,13 +72,15 @@ export const Table = ({ updateName }: Props): JSX.Element => {
 
                     <tr>
                         <td className="login">
-                            <label htmlFor="login">Имя пользователя</label>
-                            <Field
-                                type="text"
-                                name="login"
-                                validate={checkUser}
-                            />
-                            <ErrorMessage name="login">{renderError}</ErrorMessage>
+                            <div className="login_container">
+                                <label htmlFor="login">Имя пользователя</label>
+                                <Field
+                                    type="text"
+                                    name="login"
+                                    validate={checkUser}
+                                />
+                                <ErrorMessage name="login">{renderError}</ErrorMessage>
+                            </div>
                         </td>
 
                         <td className="lastName">

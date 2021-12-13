@@ -8,6 +8,7 @@ h1, p {
 
 .table {
   margin-top: 20px;
+  min-height: 300px;
 }
 
 .buttonContainer {
@@ -19,13 +20,14 @@ h1, p {
 }
 
 td {
+  display: table-cell;
   height: 120px;
   width: 300px;
   border: 1px solid black;
   padding: 10px;
 }
 
-.number {
+.number_container {
   display: flex;
   flex-direction: column;
 }
@@ -60,7 +62,7 @@ td {
   margin: 0 auto;
 }
 
-.login {
+.login_container {
   display: flex;
   flex-direction: column;
 }

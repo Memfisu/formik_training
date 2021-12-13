@@ -1,6 +1,24 @@
 import * as Yup from 'yup';
 
-const phoneRegExp = /^\+?[78][-(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$/g;
+export const phoneNumberMask = [
+    "+",
+    /\d/,
+    "(",
+    /[1-9]/,
+    /\d/,
+    /\d/,
+    ")",
+    /\d/,
+    /\d/,
+    /\d/,
+    "-",
+    /\d/,
+    /\d/,
+    /\d/,
+    /\d/
+];
+
+const phoneRegExp = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/g;
 const moneyRegExp = /^[1-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/;
 const loginRegExp = /^[a-zA-Z1-9]+$/g;
 const nameRegExp = /^[a-zA-Z]+$/g;
